@@ -3,6 +3,8 @@ import { Geist, Oswald } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { WorkoutProvider } from "@/context/WorkoutContext";
+import { Toaster } from "sonner";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -29,13 +31,21 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${oswald.variable} flex min-h-screen flex-col bg-[#0d0f12] text-[#f5f5f5]`}
       >
-        <Navbar />
+        <WorkoutProvider>
+          <Navbar />
 
-        <main className="flex-1">
-          {children}
-        </main>
+          <main className="flex-1">
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
+
+          <Toaster
+            position="top-right"
+            theme="dark"
+            richColors
+          />
+        </WorkoutProvider>
       </body>
     </html>
   );

@@ -4,9 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bookmark, Dumbbell } from "lucide-react";
 import Image from "next/image";
+import { useWorkoutContext } from "@/context/WorkoutContext";
 
 export default function Navbar() {
     const pathname = usePathname();
+    const { todayPlan, savedWorkouts } = useWorkoutContext();
 
     const isWorkoutActive =
         pathname === "/" || pathname.startsWith("/workouts");
@@ -62,7 +64,7 @@ export default function Navbar() {
                     >
                         <Dumbbell size={14} />
                         <span>Plan</span>
-                        <span>0</span>
+                        <span>{todayPlan.length}</span>
                     </Link>
 
                     <Link
@@ -71,7 +73,7 @@ export default function Navbar() {
                     >
                         <Bookmark size={14} />
                         <span>Saved</span>
-                        <span>0</span>
+                        <span>{savedWorkouts.length}</span>
                     </Link>
                 </div>
             </nav>
