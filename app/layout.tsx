@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { WorkoutProvider } from "@/context/WorkoutContext";
 import { Toaster } from "sonner";
+import { Suspense } from "react";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -32,7 +33,9 @@ export default function RootLayout({
         className={`${geist.variable} ${oswald.variable} flex min-h-screen flex-col bg-[#0d0f12] text-[#f5f5f5]`}
       >
         <WorkoutProvider>
-          <Navbar />
+          <Suspense fallback={null}>
+            <Navbar />
+          </Suspense>
 
           <main className="flex-1">
             {children}

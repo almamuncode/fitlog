@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Bookmark, Dumbbell } from "lucide-react";
 import Image from "next/image";
 import { useWorkoutContext } from "@/context/WorkoutContext";
@@ -11,6 +11,13 @@ import { useHydrated } from "@/hooks/useHydrated";
 
 export default function Navbar() {
     const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const activeTab =
+        pathname === "/my-plan"
+            ? searchParams.get("tab") ?? "plan"
+            : null;
+
     const { todayPlan, savedWorkouts } = useWorkoutContext();
 
     const hydrated = useHydrated();
@@ -67,8 +74,11 @@ export default function Navbar() {
                 {/* Status badges */}
                 <div className="flex items-center gap-2">
                     <Link
-                        href="/my-plan"
-                        className="flex items-center gap-1.5 rounded-full bg-[var(--accent)] px-3 py-1.5 text-xs font-bold text-black"
+                        href="/my-plan?tab=plan"
+                        className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${activeTab === "plan"
+                                ? "bg-[var(--accent)] text-black"
+                                : "border border-[var(--border)] text-white hover:border-[var(--accent)]"
+                            }`}
                     >
                         <Dumbbell size={14} />
                         <span>Plan</span>
@@ -76,8 +86,11 @@ export default function Navbar() {
                     </Link>
 
                     <Link
-                        href="/my-plan"
-                        className="flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3 py-1.5 text-xs font-bold"
+                        href="/my-plan?tab=saved"
+                        className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${activeTab === "saved"
+                                ? "bg-[var(--accent)] text-black"
+                                : "border border-[var(--border)] text-white hover:border-[var(--accent)]"
+                            }`}
                     >
                         <Bookmark size={14} />
                         <span>Saved</span>

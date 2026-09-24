@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import PlanSummary from "@/components/plan/PlanSummary";
 import PlanTabs from "@/components/plan/PlanTabs";
 import { useWorkoutContext } from "@/context/WorkoutContext";
@@ -13,6 +14,17 @@ import SortDropdown, {
 
 
 export default function MyPlanPage() {
+    const searchParams = useSearchParams();
+
+    const [manualTab, setManualTab] =
+        useState<"plan" | "saved" | null>(null);
+
+    const urlTab =
+        searchParams.get("tab") === "saved" ? "saved" : "plan";
+
+    const activeTab = manualTab ?? urlTab;
+
+
     const {
         todayPlan,
         savedWorkouts,
@@ -23,7 +35,7 @@ export default function MyPlanPage() {
     } = useWorkoutContext();
     const hydrated = useHydrated();
 
-    const [activeTab, setActiveTab] = useState<"plan" | "saved">("plan");
+
     const [sortBy, setSortBy] = useState<SortOption>("duration");
 
     const planForDisplay = hydrated ? todayPlan : [];
@@ -79,14 +91,11 @@ export default function MyPlanPage() {
 
             <div className="mt-10">
                 <PlanTabs
-                    activeTab={activeTab}
-                    onTabChange={(tab) => {
-                        console.log("CHANGING TAB TO:", tab);
-                        setActiveTab(tab);
-                    }}
-                    planCount={planForDisplay.length}
-                    savedCount={savedForDisplay.length}
-                />
+    activeTab={activeTab}
+    onTabChange={setManualTab}
+    planCount={planForDisplay.length}
+    savedCount={savedForDisplay.length}
+/>
 
                 <div className="flex justify-end pt-6">
                     <SortDropdown
