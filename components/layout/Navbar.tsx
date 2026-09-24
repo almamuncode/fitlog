@@ -25,7 +25,7 @@ export default function Navbar() {
 
     return (
         <header className="border-b border-[var(--border)]">
-            <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+            <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 md:h-16 md:flex-nowrap md:px-6 md:py-0">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image
@@ -36,13 +36,13 @@ export default function Navbar() {
                         priority
                         className="h-8 w-auto"
                     />
-                    <span className="ml-2 font-display text-2xl font-bold tracking-wide">
+                    <span className="ml-2 font-display text-xl font-bold tracking-wide sm:text-2xl">
                         FITLOG
                     </span>
                 </Link>
 
                 {/* Navigation */}
-                <div className="hidden items-center gap-8 md:flex">
+                <div className="order-3 flex w-full items-center justify-center gap-8 border-t border-[var(--border)] pt-3 md:order-none md:w-auto md:border-0 md:pt-0">
                     <Link
                         href="/"
                         className={`text-sm font-semibold transition-colors ${isWorkoutActive
