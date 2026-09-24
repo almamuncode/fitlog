@@ -12,8 +12,12 @@ export async function getWorkouts(): Promise<Workout[]> {
   return response.json();
 }
 
-export async function getWorkoutById(id: string): Promise<Workout> {
+export async function getWorkoutById(id: string): Promise<Workout | null> {
   const response = await fetch(`${BASE_URL}/${id}`);
+
+  if (response.status === 404) {
+    return null;
+  }
 
   if (!response.ok) {
     throw new Error("Failed to fetch workout");
