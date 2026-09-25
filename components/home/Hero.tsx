@@ -23,7 +23,7 @@ export default function Hero() {
 
                     <a
                         href="#library"
-                        className="mt-8 inline-flex items-center gap-2 bg-[var(--accent)] px-5 py-3 text-sm font-bold uppercase text-black transition hover:opacity-90"
+                        className="mt-8 inline-flex items-center gap-2 bg-[var(--accent)] px-5 py-3 rounded-xl text-sm font-bold uppercase text-black transition hover:opacity-90"
                     >
                         Browse Workouts
                         <ArrowDown size={17} />

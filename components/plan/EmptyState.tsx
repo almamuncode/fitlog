@@ -9,7 +9,7 @@ export default function EmptyState({ type }: EmptyStateProps) {
   const isPlan = type === "plan";
 
   return (
-    <div className="flex flex-col items-center justify-center border border-[var(--border)] bg-[var(--surface)] px-6 py-16 text-center">
+    <div className="flex flex-col items-center justify-center border border-[var(--border)] bg-[var(--surface)] rounded-lg px-6 py-16 text-center">
       <div className="flex h-12 w-12 items-center justify-center bg-[var(--surface-light)] text-[var(--accent)]">
         <Dumbbell size={24} />
       </div>
@@ -26,7 +26,7 @@ export default function EmptyState({ type }: EmptyStateProps) {
 
       <Link
         href="/#library"
-        className="mt-6 bg-[var(--accent)] px-5 py-3 text-xs font-bold uppercase text-black transition hover:brightness-90"
+        className="mt-6 bg-[var(--accent)] px-5 py-3 rounded-md text-xs font-bold uppercase text-black transition hover:brightness-90"
       >
         Go to workouts
       </Link>

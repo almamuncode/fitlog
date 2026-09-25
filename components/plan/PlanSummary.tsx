@@ -37,7 +37,7 @@ export default function PlanSummary({
         return (
           <div
             key={metric.label}
-            className="border border-[var(--border)] bg-[var(--surface)] p-5"
+            className="border border-[var(--border)] bg-[var(--surface)] p-5 rounded-lg"
           >
             <div className="flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--muted)]">

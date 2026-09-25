@@ -17,7 +17,7 @@ export default function Instructions({
             key={index}
             className="flex gap-4 border-b border-[var(--border)] pb-4 last:border-b-0"
           >
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-[var(--accent)] text-sm font-bold text-black">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-black">
               {index + 1}
             </div>
 

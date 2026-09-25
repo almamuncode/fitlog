@@ -20,7 +20,7 @@ export default function PlanWorkoutCard({
   onMarkDone,
 }: PlanWorkoutCardProps) {
   return (
-    <div className="flex flex-col gap-5 border border-[var(--border)] bg-[var(--surface)] p-4 sm:flex-row sm:items-center">
+    <div className="flex flex-col gap-5 border border-[var(--border)] bg-[var(--surface)] p-4 sm:flex-row sm:items-center rounded-xl">
       {/* Image */}
       <div className="relative h-40 w-full shrink-0 overflow-hidden bg-[var(--surface-light)] sm:h-28 sm:w-40">
         <Image
@@ -28,7 +28,7 @@ export default function PlanWorkoutCard({
           alt={workout.name}
           fill
           sizes="(max-width: 640px) 100vw, 160px"
-          className="object-cover"
+          className="object-cover rounded-lg"
         />
       </div>
 
@@ -38,7 +38,7 @@ export default function PlanWorkoutCard({
           {workout.muscleGroups.map((muscle) => (
             <span
               key={muscle}
-              className="bg-[var(--accent)] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-black"
+              className="bg-[var(--accent)] px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-black"
             >
               {muscle}
             </span>
@@ -55,17 +55,17 @@ export default function PlanWorkoutCard({
 
         <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-[var(--muted)]">
           <span className="flex items-center gap-1.5">
-            <Clock size={14} />
+            <Clock className="text-[var(--accent)]" size={14} />
             {workout.duration} min
           </span>
 
           <span className="flex items-center gap-1.5">
-            <Flame size={14} />
+            <Flame className="text-[var(--accent)]" size={14} />
             {workout.caloriesBurned} cal
           </span>
 
           <span className="flex items-center gap-1.5">
-            <Star size={14} />
+            <Star className="text-[var(--accent)]" size={14} />
             {workout.rating}
           </span>
         </div>
@@ -75,7 +75,7 @@ export default function PlanWorkoutCard({
       <div className="flex shrink-0 flex-wrap items-center gap-2 sm:justify-end">
         <Link
           href={`/workouts/${workout.id}`}
-          className="border border-[var(--border)] px-4 py-2 text-xs font-bold uppercase transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          className="border border-[var(--border)] px-4 py-2 text-xs font-bold uppercase rounded-lg transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
         >
           View Details
         </Link>
@@ -85,7 +85,7 @@ export default function PlanWorkoutCard({
             type="button"
             onClick={() => onMarkDone(workout.id)}
             disabled={completed}
-            className="flex cursor-pointer items-center gap-1.5 bg-[var(--accent)] px-4 py-2 text-xs font-bold uppercase text-black transition hover:brightness-90 disabled:cursor-default disabled:opacity-60"
+            className="flex cursor-pointer items-center gap-1.5 bg-[var(--accent)] px-4 py-2 rounded-lg text-xs font-bold uppercase text-black transition hover:brightness-90 disabled:cursor-default disabled:opacity-60"
           >
             <Check size={14} />
             {completed ? "Done" : "Mark as Done"}
@@ -96,7 +96,7 @@ export default function PlanWorkoutCard({
           type="button"
           onClick={() => onRemove(workout.id)}
           aria-label={`Remove ${workout.name}`}
-          className="flex h-9 w-9 cursor-pointer items-center justify-center border border-[var(--border)] text-[var(--muted)] transition hover:border-red-500 hover:text-red-500"
+          className="flex h-9 w-9 cursor-pointer items-center justify-center border rounded-lg border-[var(--border)] text-[var(--muted)] transition hover:border-red-500 hover:text-red-500"
         >
           <X size={16} />
         </button>

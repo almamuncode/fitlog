@@ -54,14 +54,14 @@ export default function SpecsPanel({ workout }: SpecsPanelProps) {
   ];
 
   return (
-    <div className="mt-8 border border-[var(--border)] bg-[var(--surface)]">
+    <div className="mt-8 border border-[var(--border)] bg-[var(--surface)] rounded-xl">
       {specs.map((spec) => {
         const Icon = spec.icon;
 
         return (
           <div
             key={spec.label}
-            className="flex items-center justify-between gap-4 border-b border-[var(--border)] px-4 py-3 last:border-b-0"
+            className="flex items-center justify-between gap-4 border-b border-[var(--border)] px-4 py-3 last:border-b-0 last:rounded-b-xl"
           >
             <div className="flex items-center gap-3 text-[var(--muted)]">
               <Icon size={16} />

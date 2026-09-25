@@ -11,7 +11,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
     return (
         <Link
             href={`/workouts/${workout.id}`}
-            className="group block overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition hover:border-[var(--accent)]"
+            className="group block overflow-hidden border border-[var(--border)] bg-[var(--surface)] rounded-2xl transition hover:border-[var(--accent)]"
         >
             {/* Workout image */}
             <div className="aspect-[4/3] overflow-hidden bg-[var(--surface-light)]">
@@ -31,7 +31,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
                     {workout.muscleGroups.map((muscle) => (
                         <span
                             key={muscle}
-                            className="bg-[var(--accent)] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-black"
+                            className="bg-[var(--accent)] px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-black"
                         >
                             {muscle}
                         </span>
